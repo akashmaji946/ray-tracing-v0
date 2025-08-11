@@ -11,7 +11,7 @@ using namespace std;
 const int IMG_HEIGHT = 512;
 const int IMG_WIDTH = 512;
 
-void write_image(const int IMG_HEIGHT, const int IMG_WIDTH, ostream& cout) {
+void write_image(const int IMG_HEIGHT, const int IMG_WIDTH, ostream& out) {
     // write ppm headers
     cout << "P3\n" << IMG_WIDTH << " " << IMG_HEIGHT << "\n255\n";
     
@@ -24,7 +24,7 @@ void write_image(const int IMG_HEIGHT, const int IMG_WIDTH, ostream& cout) {
 
             // write ppm data
             Color c(r, g, b); // [0-1] range
-            write_color(cout, c);
+            write_color(out, c);
 
         }
     }
@@ -64,7 +64,7 @@ int main() {
 
     // Example of using Ray
     Point origin(1, 1, 1);
-    Vector direction(1, 0, 0);
+    Vector direction(1, 0, 0); // always a unit vector
     Ray ray(origin, direction);
     cout << "Ray: " << ray << endl;
     cout << "Ray at t=2: " << ray.at(2) << endl;

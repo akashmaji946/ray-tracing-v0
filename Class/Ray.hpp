@@ -22,6 +22,11 @@ public:
         return Ray(m_origin, m_direction * t);
     }
 
+    Ray unit_ray() const {
+        Vector unit_direction = m_direction.unit_vector();
+        return Ray(m_origin, unit_direction);
+    }
+
     // Overload the << operator for easy output
     friend std::ostream& operator<<(std::ostream& out, const Ray& ray) {
         out << "Ray(origin: " << ray.m_origin << ", direction: " << ray.m_direction << ")";
