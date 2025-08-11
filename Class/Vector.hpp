@@ -17,6 +17,13 @@ public:
     // custom
     Vector(double x, double y, double z): e{x, y, z} {}
 
+    // copy constructor
+    Vector(const Vector& v) {
+        e[0] = v.e[0];
+        e[1] = v.e[1];
+        e[2] = v.e[2];
+    }
+
     // getters for components
     double xx() const{
         return e[0];
@@ -111,7 +118,7 @@ inline void write_vector(ostream& out, const Vector& v) {
 }   
 
 inline ostream& operator<<(ostream& out, const Vector& v) {
-    return out << "< " << v.e[0] << ", " << v.e[1] << ", " << v.e[2] << ">\n";
+    return out << "< " << v.e[0] << ", " << v.e[1] << ", " << v.e[2] << ">";
 }   
 
 inline double dot(const Vector& u, const Vector& v) {

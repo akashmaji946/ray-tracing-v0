@@ -4,6 +4,7 @@
 #include "Vector.hpp"
 #include "Color.hpp"
 #include "Point.hpp"
+#include "Ray.hpp"
 
 using namespace std;
 
@@ -57,6 +58,18 @@ int main() {
     }
     // Write the image to the file
     write_image(IMG_HEIGHT, IMG_WIDTH, out);
+
+    out.close();
+    cout << "Image written to output.ppm" << endl;
+
+    // Example of using Ray
+    Point origin(1, 1, 1);
+    Vector direction(1, 0, 0);
+    Ray ray(origin, direction);
+    cout << "Ray: " << ray << endl;
+    cout << "Ray at t=2: " << ray.at(2) << endl;
+    cout << "Ray scaled by 2 at 5: " << ray.scaled(2).at(5) << endl;
+    
 
 
     return 0;
