@@ -19,7 +19,7 @@ Color rayGradColor(const Ray& ray){
 
 Color rayColor(const Ray& ray, const Sphere& sphere) {
     double t = -1; // Initialize t to -1 to indicate no intersection
-    if(sphere.intersects(ray, t)) {
+    if(sphere.intersects_new(ray, t)) {
         Point intersection = sphere.intersection_point(ray);
 
         Vector normal = intersection - sphere.center();

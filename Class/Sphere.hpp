@@ -16,6 +16,24 @@ public:
     const Point& center() const { return m_center; }
     double radius() const { return m_radius; }
 
+    // a simple method to check for intersection
+    bool intersects_new(const Ray& ray, double& t) const{
+        Vector oc = m_center - ray.origin();
+        double a = ray.direction().squared_length();
+        double h = dot(oc, ray.direction());
+        double c = oc.squared_length() - m_radius * m_radius;
+        double discriminant = h * h - a * c;
+        if (discriminant < 0) {
+            t = -1.0;
+            return false; // No intersection    
+        }
+        double t1 = (h + std::sqrt(discriminant)) / a;
+        double t2 = (h - std::sqrt(discriminant)) / a;
+        t = (t1 < t2) ? t1 : t2;
+        return true;
+
+    }
+
     // Method to check if a ray intersects with the sphere
     bool intersects(const Ray& ray, double& t) const {
         Vector oc = m_center - ray.origin();
