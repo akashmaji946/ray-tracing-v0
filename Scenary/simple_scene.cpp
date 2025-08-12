@@ -24,7 +24,7 @@ Color rayColor(const Ray& ray, const HittableList& world) {
     HitRecord rec;
     double t = -1; // Initialize t to -1 to indicate no intersection
 
-    if(world.hitted(ray, 0, INF, rec)) {
+    if(world.hitted(ray, Interval(0, INF), rec)) {
         // If the ray hits an object, use the hit record to determine color
         Vector normal = rec.normal;
         normal.make_unit_vector(); // Normalize the normal vector
@@ -116,14 +116,14 @@ int main(){
 
     cout << "Image dimensions: " << IMG_WIDTH << "x" << IMG_HEIGHT << endl;
     // render the image
-    ofstream out("new.ppm", std::ios::out | std::ios::trunc);
+    ofstream out("simple_scene.ppm", std::ios::out | std::ios::trunc);
     if (!out) {
         cerr << "Error opening file for writing." << endl;
         return 1;
     }else{
         write_image_to_file(IMG_HEIGHT, IMG_WIDTH, out, camera_origin, focal_length, viewport_u, viewport_v, d_u, d_v, upper_left_corner, pixel_origin, world);
         out.close();
-        cout << "Image written to new.ppm" << endl;
+        cout << "Image written to simple_scene.ppm" << endl;
     }
 
 

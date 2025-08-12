@@ -78,12 +78,12 @@ public:
 
 
     // if sphere is being hit by a ray, set the hit record
-    bool hitted(const Ray& ray, double t_min, double t_max, HitRecord& rec) const {
+    bool hitted(const Ray& ray, Interval ray_interval, HitRecord& rec) const {
         double t;
         if (!intersects(ray, t)) {
             return false; // No intersection
         }
-        if (t < t_min || t > t_max) {
+        if (ray_interval.contains(t) == false) {
             return false; // Intersection is outside the range
         }
 
