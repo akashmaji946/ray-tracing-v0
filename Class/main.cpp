@@ -69,6 +69,8 @@ int main() {
     cout << "Ray: " << ray << endl;
     cout << "Ray at t=2: " << ray.at(2) << endl;
     cout << "Ray scaled by 2 at 5: " << ray.scaled(2).at(5) << endl;
+
+    
     
 
 

@@ -5,6 +5,7 @@
 #include <cmath>
 #include <iostream>
 #include <cassert>
+#include <iomanip>
 
 using namespace std;
 
@@ -118,7 +119,9 @@ inline void write_vector(ostream& out, const Vector& v) {
 }   
 
 inline ostream& operator<<(ostream& out, const Vector& v) {
+    out << std::setprecision(6) << std::fixed; // Set precision for floating-point output
     return out << "< " << v.e[0] << ", " << v.e[1] << ", " << v.e[2] << ">";
+    out.clear(); // Clear the stream state
 }   
 
 inline double dot(const Vector& u, const Vector& v) {

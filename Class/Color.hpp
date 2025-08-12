@@ -9,9 +9,9 @@ inline void write_color(ostream& out, const Color& c) {
     double gg = c.yy();
     double bb = c.zz();
 
-    assert(rr >= 0 && rr <= 1);
-    assert(gg >= 0 && gg <= 1);
-    assert(bb >= 0 && bb <= 1);
+    // assert(rr >= 0 && rr <= 1);
+    // assert(gg >= 0 && gg <= 1);
+    // assert(bb >= 0 && bb <= 1);
 
     // Clamp the color values to the range [0, 1]
     if (rr < 0) rr = 0;
