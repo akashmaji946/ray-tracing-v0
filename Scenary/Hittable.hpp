@@ -10,7 +10,7 @@
 class Hittable{
     public:
         //  if a ray intersects with the object
-        virtual bool hit(const Ray& ray, double t_min, double t_max, HitRecord& rec) const = 0;
+        virtual bool hitted(const Ray& ray, double t_min, double t_max, HitRecord& rec) const = 0;
 
         // Virtual destructor
         virtual ~Hittable() = default;

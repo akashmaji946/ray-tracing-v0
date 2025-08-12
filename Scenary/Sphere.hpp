@@ -7,8 +7,9 @@
 #include "Ray.hpp"
 #include "Vector.hpp"
 #include "HitRecord.hpp"
+#include "Hittable.hpp"
 
-class Sphere {
+class Sphere: public Hittable {
 public:
     Sphere() = default;
     Sphere(const Point& center, double radius)
