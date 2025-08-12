@@ -25,6 +25,12 @@ public:
         return min <= other.min && max >= other.max;
     }
 
+    double clamp(double value) const {
+        if (value < min) return min;
+        if (value > max) return max;
+        return value;
+    }
+
 };
 
 const Interval EMPTY_INTERVAL = Interval(INF, -INF);

@@ -21,10 +21,12 @@ int main(){
     // camera setup
     Camera cam;
     cam.aspect_ratio = 16.0 / 9.0;
-    cam.image_width = 800;
+    cam.image_width = 400;
+
+    cam.samples_per_pixel = 100; // Set samples per pixel for anti-aliasing
 
     cam.init();
-    cam.render(world);
+    cam.render(world, true); // Render with anti-aliasing
 
 
 }

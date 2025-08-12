@@ -22,7 +22,7 @@ public:
 
     void set_face_normal(const Ray& ray, const Vector& outward_normal) {
         front_face = dot(ray.direction(), outward_normal) < 0;
-        normal = front_face ? outward_normal : (-1 * outward_normal);
+        normal = front_face ? outward_normal : (-outward_normal);
     }
 
 

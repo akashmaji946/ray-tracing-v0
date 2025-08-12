@@ -17,16 +17,16 @@ inline void write_color(ostream& out, const Color& c) {
     // assert(bb >= 0 && bb <= 1);
 
     // Clamp the color values to the range [0, 1]
-    if (rr < 0) rr = 0;
-    if (gg < 0) gg = 0;
-    if (bb < 0) bb = 0;
-    if (rr > 1) rr = 1;
-    if (gg > 1) gg = 1;
-    if (bb > 1) bb = 1;
-
-    int r = static_cast<int>(rr * 255.999);
-    int g = static_cast<int>(gg * 255.999);
-    int b = static_cast<int>(bb * 255.999);
+    // if (rr < 0) rr = 0;
+    // if (gg < 0) gg = 0;
+    // if (bb < 0) bb = 0;
+    // if (rr > 1) rr = 1;
+    // if (gg > 1) gg = 1;
+    // if (bb > 1) bb = 1;
+    static Interval intensity(0.0, 0.999);
+    int r = static_cast<int>(256 * intensity.clamp(rr));
+    int g = static_cast<int>(256 * intensity.clamp(gg));
+    int b = static_cast<int>(256 * intensity.clamp(bb));
 
     // Write the color as RGB values
     out << r << ' ' << g << ' ' << b << '\n'; 

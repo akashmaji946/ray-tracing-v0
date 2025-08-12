@@ -78,6 +78,10 @@ public:
         return *this;
     }   
 
+    Vector operator-() const {
+        return Vector(-e[0], -e[1], -e[2]);
+    }
+
     double length() const {
         return std::sqrt(squared_length());
     }   

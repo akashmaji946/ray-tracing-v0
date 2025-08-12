@@ -79,14 +79,26 @@ public:
 
     // if sphere is being hit by a ray, set the hit record
     bool hitted(const Ray& ray, Interval ray_interval, HitRecord& rec) const {
-        double t;
-        if (!intersects(ray, t)) {
-            return false; // No intersection
-        }
-        if (ray_interval.contains(t) == false) {
-            return false; // Intersection is outside the range
+        double t = -1;
+        Vector oc = m_center - ray.origin();
+        double a = ray.direction().squared_length();
+        double h = dot(oc, ray.direction());
+        double c = oc.squared_length() - m_radius * m_radius;
+        double discriminant = h * h - a * c;
+        if (discriminant < 0) {
+            t = -1.0;
+            return false; // No intersection    
         }
 
+        double sqrtd = std::sqrt(discriminant);
+        double root = (h - sqrtd) / a;
+        if(root < ray_interval.min || root > ray_interval.max) {
+            root = (h + sqrtd) / a; // Check the second root
+            if(root < ray_interval.min || root > ray_interval.max) {
+                return false; // No valid intersection in the interval
+            }
+        }
+        t = root; // Use the valid root
         Point hit_point = ray.at(t);
         Vector outward_normal = (hit_point - m_center) / m_radius; // Normalized normal vector
         rec.set_face_normal(ray, outward_normal);
