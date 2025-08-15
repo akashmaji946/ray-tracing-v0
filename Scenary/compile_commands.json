@@ -1,0 +1,7 @@
+[
+  {
+    "directory": "/home/akashmaji/Documents/00_RAY_TRACING/Scenary",
+    "command": "g++ -std=c++17 -Wall -Wextra -g -c main.cpp",
+    "file": "main.cpp"
+  }
+]

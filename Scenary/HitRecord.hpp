@@ -25,9 +25,6 @@ public:
         normal = front_face ? outward_normal : (-outward_normal);
     }
 
-
-
-
 };
 
 #endif // HIT_RECORD_H

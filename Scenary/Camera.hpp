@@ -1,12 +1,19 @@
 
-
 #ifndef CAMERA_H
 #define CAMERA_H
 
 #include "commons.hpp"
 #include "utility.hpp"
+#include "Point.hpp"
+#include "Vector.hpp"
+#include "Ray.hpp"
+#include "HittableList.hpp"
+#include "HitRecord.hpp"
+#include "Interval.hpp"
+#include "Color.hpp"
 
 class Camera {
+
 public:
     double aspect_ratio;
     int image_width;
@@ -27,6 +34,7 @@ public:
     bool INIT = false; // Flag to check if camera is initialized
 
     Camera() : aspect_ratio(16.0 / 9.0), image_width(800), samples_per_pixel(10){}
+    Camera(double aspect_ratio, int image_width, int image_height, int samples_per_pixel) : aspect_ratio(aspect_ratio), image_width(image_width), image_height(image_height), samples_per_pixel(samples_per_pixel){}
 
     void init() {
         // Initialize camera parameters if needed
@@ -77,7 +85,7 @@ public:
             write_image(world, out);
         }
 
-        std::cout << "Image written to main.ppm" << std::endl;
+        std::cout << "Image written to seam.ppm" << std::endl;
 
     }
 

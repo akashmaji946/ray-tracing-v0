@@ -9,7 +9,7 @@
 #include "HitRecord.hpp"
 #include "Hittable.hpp"
 #include "HittableList.hpp"
-
+#include "Camera.hpp"
 using namespace std;
 
 

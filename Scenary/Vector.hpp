@@ -128,6 +128,12 @@ inline double dot(const Vector& u, const Vector& v) {
     return u.e[0] * v.e[0] + u.e[1] * v.e[1] + u.e[2] * v.e[2];
 }
 
+inline Vector cross(const Vector& u, const Vector& v) {
+    return Vector(u.e[1] * v.e[2] - u.e[2] * v.e[1],
+                  u.e[2] * v.e[0] - u.e[0] * v.e[2],
+                  u.e[0] * v.e[1] - u.e[1] * v.e[0]);
+}
+
 inline Vector operator+(const Vector& u, const Vector& v) {
     return Vector(u.e[0] + v.e[0], u.e[1] + v.e[1], u.e[2] + v.e[2]);
 }

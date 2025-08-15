@@ -8,7 +8,8 @@
 #include "HitRecord.hpp"
 #include "Hittable.hpp"
 #include "HittableList.hpp"
-
+#include "Triangle.hpp"
+#include "Square.hpp"
 #include "Camera.hpp"
 
 int main(){
@@ -18,12 +19,15 @@ int main(){
     world.add(make_shared<Sphere>(Point(0, 0, -1), 0.5));
     world.add(make_shared<Sphere>(Point(0, -100.5, -1), 100));
 
+    world.add(make_shared<Triangle>(Point(0, 0, -1), Point(1, 0, -1), Point(0, 1, -1)));
+    world.add(make_shared<Square>(Point(1, 1, -2), 1, 1));
+
     // camera setup
     Camera cam;
     cam.aspect_ratio = 16.0 / 9.0;
-    cam.image_width = 400;
+    cam.image_width = 1920;
 
-    cam.samples_per_pixel = 100; // Set samples per pixel for anti-aliasing
+    cam.samples_per_pixel = 1; // Set samples per pixel for anti-aliasing
 
     cam.init();
     cam.render(world, true); // Render with anti-aliasing
