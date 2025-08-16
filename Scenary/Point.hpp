@@ -7,6 +7,7 @@
 
 using Point = Vector;
 
+__host__ __device__
 inline void write_point(ostream& out, const Point& p) {
     out << p.xx() << " " << p.yy() << " " << p.zz() << "\n";
 }

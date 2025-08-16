@@ -4,9 +4,11 @@
 #include "commons.hpp"
 #include "utility.hpp"
 #include "Vector.hpp"
+#include "Interval.hpp"
 
 using Color = Vector;
 
+__host__ __device__
 inline void write_color(ostream& out, const Color& c) {
     double rr = c.xx();
     double gg = c.yy();
@@ -23,7 +25,8 @@ inline void write_color(ostream& out, const Color& c) {
     // if (rr > 1) rr = 1;
     // if (gg > 1) gg = 1;
     // if (bb > 1) bb = 1;
-    static Interval intensity(0.0, 0.999);
+    
+    Interval intensity(0.0, 0.999);
     int r = static_cast<int>(256 * intensity.clamp(rr));
     int g = static_cast<int>(256 * intensity.clamp(gg));
     int b = static_cast<int>(256 * intensity.clamp(bb));

@@ -13,15 +13,23 @@
 
 class Triangle: public Hittable {
 public:
+
+    __host__ __device__
     Triangle() = default;
+    __host__ __device__
     Triangle(const Point& p0, const Point& p1, const Point& p2)
         : m_p0(p0), m_p1(p1), m_p2(p2) {}
+    __host__ __device__
     Triangle(const Triangle& other)
         : m_p0(other.m_p0), m_p1(other.m_p1), m_p2(other.m_p2) {}
+    __host__ __device__
     const Point& p0() const { return m_p0; }
+    __host__ __device__
     const Point& p1() const { return m_p1; }
+    __host__ __device__
     const Point& p2() const { return m_p2; }    
 
+    __host__ __device__
     bool hitted(const Ray& ray, Interval ray_interval, HitRecord& rec) const {
 
         Vector e1 = m_p1 - m_p0;
@@ -58,10 +66,12 @@ public:
         return true;
     }
 
+    __host__ __device__
     Point intersection_point(const Ray& ray, double t) const {
         return ray.at(t);
     }
 
+    __host__ __device__
     Vector normal() const {
         Vector e1 = m_p1 - m_p0;
         Vector e2 = m_p2 - m_p0;

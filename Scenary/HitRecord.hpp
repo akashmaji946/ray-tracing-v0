@@ -15,11 +15,14 @@ public:
     double t; // parameter along the ray
     bool front_face; // is the hit on the front face of the object
 
+    __host__ __device__
     HitRecord() = default;
 
+    __host__ __device__
     HitRecord(const Point& p, const Vector& normal, double t, bool front_face)
         : p(p), normal(normal), t(t), front_face(front_face) {}
 
+    __host__ __device__
     void set_face_normal(const Ray& ray, const Vector& outward_normal) {
         front_face = dot(ray.direction(), outward_normal) < 0;
         normal = front_face ? outward_normal : (-outward_normal);

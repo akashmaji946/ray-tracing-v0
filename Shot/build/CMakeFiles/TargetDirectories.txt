@@ -1,0 +1,3 @@
+/home/akashmaji/Documents/00_RAY_TRACING/Shot/build/CMakeFiles/Shot.dir
+/home/akashmaji/Documents/00_RAY_TRACING/Shot/build/CMakeFiles/edit_cache.dir
+/home/akashmaji/Documents/00_RAY_TRACING/Shot/build/CMakeFiles/rebuild_cache.dir

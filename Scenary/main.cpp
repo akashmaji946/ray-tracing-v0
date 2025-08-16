@@ -12,6 +12,7 @@
 #include "Square.hpp"
 #include "Camera.hpp"
 
+
 int main(){
 
     // setup world
@@ -29,8 +30,15 @@ int main(){
 
     cam.samples_per_pixel = 1; // Set samples per pixel for anti-aliasing
 
+    // lets measure the time it takes to render the image
+    auto start = std::chrono::high_resolution_clock::now();
+
     cam.init();
-    cam.render(world, true); // Render with anti-aliasing
+    cam.render_cpu(world, true, false); 
+    
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> duration = end - start;
+    std::cout << "Time taken to render the image [CPU]: " << duration.count() * 1000 << " milliseconds" << std::endl;
 
 
 }

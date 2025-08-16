@@ -8,18 +8,31 @@
 #include "Vector.hpp"
 #include "HitRecord.hpp"
 #include "Hittable.hpp"
+#include "Interval.hpp"
+
 
 class Sphere: public Hittable {
 public:
+
+    __host__ __device__
     Sphere() = default;
+
+    __host__ __device__
     Sphere(const Point& center, double radius)
-        : m_center(center), m_radius(radius) {}     
+        : m_center(center), m_radius(radius) {} 
+
+    __host__ __device__    
     Sphere(const Sphere& other)
         : m_center(other.m_center), m_radius(other.m_radius) {} 
+
+    __host__ __device__
     const Point& center() const { return m_center; }
+
+    __host__ __device__
     double radius() const { return m_radius; }
 
     // a simple method to check for intersection
+    __host__ __device__
     bool intersects_new(const Ray& ray, double& t) const{
         Vector oc = m_center - ray.origin();
         double a = ray.direction().squared_length();
@@ -38,6 +51,7 @@ public:
     }
 
     // Method to check if a ray intersects with the sphere
+    __host__ __device__
     bool intersects(const Ray& ray, double& t) const {
         Vector oc = m_center - ray.origin();
         double a = dot(ray.direction(), ray.direction());
@@ -68,16 +82,19 @@ public:
     } 
       
     // Method to get the intersection point if it exists
+    __host__ __device__
     Point intersection_point(const Ray& ray) const {
         double t = -1;
         if(!intersects(ray, t)) {
-            throw std::runtime_error("No intersection found");
+            // throw std::runtime_error("No intersection found");
+            return Point(0, 0, 0);
         }
         return ray.at(t); // Return the intersection point
     }
 
 
     // if sphere is being hit by a ray, set the hit record
+    __host__ __device__
     bool hitted(const Ray& ray, Interval ray_interval, HitRecord& rec) const {
         double t = -1;
         Vector oc = m_center - ray.origin();

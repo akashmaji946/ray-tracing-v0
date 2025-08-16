@@ -11,10 +11,14 @@
 class Hittable{
     public:
         //  if a ray intersects with the object
-        virtual bool hitted(const Ray& ray, Interval ray_interval, HitRecord& rec) const = 0;
+        __host__ __device__
+        bool hitted(const Ray& ray, Interval ray_interval, HitRecord& rec) const{
+            return false;
+        }
 
         // Virtual destructor
-        virtual ~Hittable() = default;
+        __host__ __device__
+        ~Hittable() = default;
 
         // Optional: Function to get the bounding box of the hittable object
         // virtual bool bounding_box(double time0, double time1, AABB& output_box) const {
